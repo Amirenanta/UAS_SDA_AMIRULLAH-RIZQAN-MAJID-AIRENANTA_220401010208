@@ -15,7 +15,7 @@ struct nama {
     std::string asal;
 };
 
-void bubbleSort(nama arr[], int n) {
+void bubleSort(nama arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (arr[j].name > arr[j + 1].name) {
@@ -24,7 +24,19 @@ void bubbleSort(nama arr[], int n) {
         }
     }
 }
-
+void selectionSort(nama arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j].name < arr[minIndex].name) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            std::swap(arr[i], arr[minIndex]);
+        }
+    }
+}
 int main() {
     nama alamat[] = {
         {"Fahmi", "Jakarta"},
@@ -43,9 +55,15 @@ int main() {
         std::cout << alamat[i].name << " - " << alamat[i].asal << std::endl;
     }
 
-    bubbleSort(alamat, n);
+    bubleSort(alamat, n);
 
     std::cout << "\nList setelah disort menggunakan Buble Sort:" << std::endl;
+    for (int i = 0; i < n; i++) {
+        std::cout << alamat[i].name << " - " << alamat[i].asal << std::endl;
+    }
+    selectionSort(alamat, n);
+
+    std::cout << "\nList setelah disort menggunakan Selection Sort:" << std::endl;
     for (int i = 0; i < n; i++) {
         std::cout << alamat[i].name << " - " << alamat[i].asal << std::endl;
     }
